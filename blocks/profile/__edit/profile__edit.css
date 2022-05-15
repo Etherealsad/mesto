@@ -1,0 +1,16 @@
+.profile__edit {
+    background-color: black;
+    border: 1px solid white;
+    height: 24px;
+    width: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    cursor: pointer;
+    transition: 0.5s linear;
+}
+
+.profile__edit:hover {
+    opacity: 0.33;
+}
