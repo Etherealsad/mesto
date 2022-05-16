@@ -5,11 +5,13 @@
     max-width: 880px;
     gap: 20px 17px;
     justify-content: center;
+    max-width: 880;
 }
 
 @media screen and (max-width: 880px) {
     .elements {
         grid-template-columns: repeat(2, 1fr);
+        margin-top: 36px;
     }
 }
 

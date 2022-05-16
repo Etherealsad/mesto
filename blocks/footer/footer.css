@@ -16,5 +16,6 @@
       padding-bottom: 36px;
       padding-left: 19px;
       padding-right: 19px;
+      width: calc(100% - 30px);
     }
   }
