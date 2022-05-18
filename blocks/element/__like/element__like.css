@@ -10,9 +10,5 @@
 }
 
 .element__like:hover {
-    opacity: 0.33;
-}
-
-.element__like::before {
-    background-color: black;
+    opacity: 0.5;
 }

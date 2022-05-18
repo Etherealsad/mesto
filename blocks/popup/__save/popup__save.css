@@ -10,4 +10,10 @@
     margin-top: 48px;
     padding-top: 14px;
     padding-bottom: 18px;
+    border-radius: 2px;
+    transition: 0.5s linear;
+}
+
+.popup__save:hover {
+    opacity: 0.8;
 }
