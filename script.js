@@ -1,8 +1,8 @@
 let popup = document.querySelector(".popup");
 let closePopup = document.querySelector(".popup__close-button");
 let formElement = document.querySelector(".popup__form");
-let nameInput = document.querySelector(".popup__input_title");
-let jobInput = document.querySelector(".popup__input_subtitle");
+let nameInput = document.querySelector(".popup__input_type_name");
+let jobInput = document.querySelector(".popup__input_type_job");
 let profileName = document.querySelector(".profile__title");
 let profileJob = document.querySelector(".profile__subtitle");
 let profileEdit = document.querySelector(".profile__edit");
@@ -16,7 +16,6 @@ function poupOpen() {
 
 function popupClose() {
     popup.classList.remove("popup_open");
-
 }
 
 profileEdit.addEventListener("click", poupOpen);
