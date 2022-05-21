@@ -3,6 +3,7 @@
     padding: 0;
     background-color: rgba(0,0,0,0);
     border: none;
+    display: flex;
     height: 40px;
     width: 40px;
     cursor: pointer;
@@ -10,6 +11,22 @@
     top: -40px;
     right: -45px;
     transition: 0.5s linear;
+}
+
+@media screen and (max-width: 550px) {
+    .popup__close-button {
+        height: 26px;
+        width: 26px;
+        top: -26px;
+        right: -26px;
+    }
+    }
+
+@media screen and (max-width: 460px) {
+.popup__close-button {
+    top: -39px;
+    right: 0;
+}
 }
 
 .popup__close-button:hover {
