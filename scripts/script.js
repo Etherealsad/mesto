@@ -106,13 +106,12 @@ const initialCards = [
 	return newCard;
 }
 
- function renderList() {
-	const result = initialCards.map(function(item) {
-		const newCard = createElementDomNode(item);
+const formAddCard = (card) => {cardsContainer.prepend(card) /* Добавления карточки на страницу стоит вынести в отдельный метод */
+} 
 
-		return newCard;
-	});
-	cardsContainer.append(...result);
+ function renderList() {
+    initialCards.reverse().forEach((item) => formAddCard(createElementDomNode(item)));
+
 }
 
 renderList() 
@@ -125,8 +124,7 @@ function deleteCard(evt) {
     currentCard.remove();
 }
 
-const formAddCard = (card) => {initialCards.prepend(renderList(card)) /* Добавления карточки на страницу стоит вынести в отдельный метод */
-} 
+
 
 // Добавление карточек
 function addCard (evt) {
@@ -158,3 +156,4 @@ function addCard (evt) {
     poupOpen(popupViewPicture);
   });
   }
+
