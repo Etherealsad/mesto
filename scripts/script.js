@@ -83,7 +83,7 @@ const initialCards = [
     }
   ]; 
 
-  const container = document.querySelector('.elements'); /* Контейнер для добавления новых карточек */
+  const cardsContainer = document.querySelector('.elements'); /* Контейнер для добавления новых карточек */
   const tempalateElement = document.querySelector('.template').content;
 
   function createElementDomNode(item) {
@@ -106,16 +106,16 @@ const initialCards = [
 	return newCard;
 }
 
-function renderList() {
+ function renderList() {
 	const result = initialCards.map(function(item) {
 		const newCard = createElementDomNode(item);
 
 		return newCard;
 	});
-	container.append(...result);
+	cardsContainer.append(...result);
 }
 
-renderList()
+renderList() 
 
 /* удалить карточку */
 function deleteCard(evt) {
@@ -125,11 +125,14 @@ function deleteCard(evt) {
     currentCard.remove();
 }
 
+const formAddCard = (card) => {initialCards.prepend(renderList(card)) /* Добавления карточки на страницу стоит вынести в отдельный метод */
+} 
+
 // Добавление карточек
 function addCard (evt) {
     evt.preventDefault();
     const card = createElementDomNode({name: inputNamePic.value, link: inputLinkPick.value});
-    container.prepend(card);
+    cardsContainer.prepend(card);
 
     popupClose();
   }
