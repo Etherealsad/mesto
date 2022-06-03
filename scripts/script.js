@@ -15,8 +15,8 @@ const inputNamePic = document.querySelector(".popup__input_type_pic"); /* Наз
 const inputLinkPick = document.querySelector(".popup__input_type_link"); /* Ссылка на картинку */
 const addPicButton = document.querySelector(".profile__add-button"); /* Кнопка добавить в профиле */
 const closePopupButtonImage = document.querySelector(".popup__close-button-image"); /* кнопка закрытия большой картинки */
-const closePopupEditProfile = document.querySelector('.popup-edit__close-button');
-const closePopupAddNewPic = document.querySelector('.popup-add__close-button');
+const closePopupEditProfile = document.querySelector('.popup__close-button-profile');
+const closePopupAddNewPic = document.querySelector('.popup__close-button-add');
 
 
 /* Функция открытия попапа */
