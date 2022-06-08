@@ -163,6 +163,14 @@ function configureCardPictureForOpen(picture) {
         openPopup(popupViewPicture);
     });
 }
+
+function keyHandler(evt) {
+    const openedPopup = document.querySelector('.popup_open');
+    if (evt.key === 'Escape') {
+        closePopup(openedPopup);
+    }
+}
+
 closePopupButtonImage.addEventListener('click', handleCloseButton);
 closePopupEditProfile.addEventListener('click', handleCloseButton);
 closePopupAddNewPic.addEventListener('click', handleCloseButton);
