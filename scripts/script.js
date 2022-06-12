@@ -22,6 +22,8 @@ const closePopupAddNewPic = document.querySelector('.popup__close-button-add');
 /* Функция открытия попапа */
 function openPopup(popup) {
     popup.classList.add("popup_open");
+    document.addEventListener('keydown', keyHandler);
+    clickCloserEnable();
 }
 
 /* Изменение профиля */
@@ -40,14 +42,37 @@ addPicButton.addEventListener('click', () => {
 
 /* Функция закрытия попапа */
 function closePopup(popup) {
+    clickCloserDisable();
     popup.classList.remove("popup_open");
+    document.removeEventListener('keydown', keyHandler);
 }
 
 const handleCloseButton = (evt) => {
     closePopup(evt.target.closest('.popup'));
 }
 
+// Функция закрытия на ESC
+const keyHandler = (event) => {
+    const openedPopup = document.querySelector('.popup_open');
+    if (event.key === 'Escape') {
+      closePopup(openedPopup);
+    }
+  }
 
+  // Функция закрытия попапа при клике вне формы + listener
+  function clickCloserEnable() {
+    const openedPopup = document.querySelector('.popup_open');
+    openedPopup.addEventListener('click', () => closePopup(openedPopup));
+    openedPopup.querySelector('.stop-propagation').addEventListener('click', function(event) {
+      event.stopPropagation();
+    });
+  }
+
+  // Функция отключения listener clickCloser
+  function clickCloserDisable() {
+    const openedPopup = document.querySelector('.popup_open');
+    document.removeEventListener('click', () => closePopup(openedPopup));
+  }
 
 /* Сохранение изменений в профиле */
 function editProfileFormSubmitHandler(evt) {
@@ -164,12 +189,6 @@ function configureCardPictureForOpen(picture) {
     });
 }
 
-function keyHandler(evt) {
-    const openedPopup = document.querySelector('.popup_open');
-    if (evt.key === 'Escape') {
-        closePopup(openedPopup);
-    }
-}
 
 closePopupButtonImage.addEventListener('click', handleCloseButton);
 closePopupEditProfile.addEventListener('click', handleCloseButton);
