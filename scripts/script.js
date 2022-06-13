@@ -1,29 +1,28 @@
 const profileEdit = document.querySelector(".profile__edit"); /* Кнопка изменить профиль */
-const popup = document.querySelector(".popup"); /* попап */
+
 const formProfileElement = document.querySelector(".popup__form_edit-profile"); /* Попап изменения профиля */
 const popupNewPic = document.querySelector(".popup_add-picture"); /* Добавление картинки */
 const popupViewPicture = document.querySelector('.popup_view-picture');
 const closePopupButton = document.querySelectorAll(".popup__close-button"); /* Закрыть попап */
 const popupProfile = document.querySelector(".popup_edit-profile") /* Попап изменения профиля */
 const formPictureElement = document.querySelector(".popup__form_add-picture") /* Форма для добавления картинки попапа */
-const formElement = document.querySelector(".popup__form"); /* форма внутри попапа */
+const formElementSubmit = document.querySelector(".popup__form"); /* форма внутри попапа */
 const profileName = document.querySelector(".profile__title"); /* Имя профиля */
 const profileJob = document.querySelector(".profile__subtitle"); /* Род деятельности в профиле */
 const nameInput = document.querySelector(".popup__input_type_name"); /* Инпут изменения именни */
 const jobInput = document.querySelector(".popup__input_type_job"); /* Инпут изменения профессии */
 const inputNamePic = document.querySelector(".popup__input_type_pic"); /* Название места */
 const inputLinkPick = document.querySelector(".popup__input_type_link"); /* Ссылка на картинку */
-const addPicButton = document.querySelector(".profile__add-button"); /* Кнопка добавить в профиле */
-const closePopupButtonImage = document.querySelector(".popup__close-button-image"); /* кнопка закрытия большой картинки */
-const closePopupEditProfile = document.querySelector('.popup__close-button-profile');
-const closePopupAddNewPic = document.querySelector('.popup__close-button-add');
+const picButtonAdd = document.querySelector(".profile__add-button"); /* Кнопка добавить в профиле */
+const popupButtonImageClose = document.querySelector(".popup__close-button-image"); /* кнопка закрытия большой картинки */
+const popupEditProfileClose = document.querySelector('.popup__close-button-profile');
+const popupAddNewPicClose = document.querySelector('.popup__close-button-add');
 
 
 /* Функция открытия попапа */
 function openPopup(popup) {
     popup.classList.add("popup_open");
-    document.addEventListener('keydown', keyHandler);
-    clickCloserEnable();
+    document.addEventListener('keydown', closePopupEsc);
 }
 
 /* Изменение профиля */
@@ -34,7 +33,7 @@ profileEdit.addEventListener('click', () => {
 })
 
 /* Добавление картинки */
-addPicButton.addEventListener('click', () => {
+picButtonAdd.addEventListener('click', () => {
     inputNamePic.value = '';
     inputLinkPick.value = '';
     openPopup(popupNewPic);
@@ -42,37 +41,34 @@ addPicButton.addEventListener('click', () => {
 
 /* Функция закрытия попапа */
 function closePopup(popup) {
-    clickCloserDisable();
+    document.removeEventListener('keydown', closePopupEsc);
     popup.classList.remove("popup_open");
-    document.removeEventListener('keydown', keyHandler);
 }
 
 const handleCloseButton = (evt) => {
     closePopup(evt.target.closest('.popup'));
-}
+}      
 
-// Функция закрытия на ESC
-const keyHandler = (event) => {
-    const openedPopup = document.querySelector('.popup_open');
-    if (event.key === 'Escape') {
-      closePopup(openedPopup);
+function popupClickClose(evt) {
+    if (evt.target === evt.currentTarget) {
+      closePopup(evt.target);
     }
   }
 
-  // Функция закрытия попапа при клике вне формы + listener
-  function clickCloserEnable() {
-    const openedPopup = document.querySelector('.popup_open');
-    openedPopup.addEventListener('click', () => closePopup(openedPopup));
-    openedPopup.querySelector('.stop-propagation').addEventListener('click', function(event) {
-      event.stopPropagation();
-    });
-  }
+  document.querySelectorAll(".popup").forEach((popup) => {
+    popup.addEventListener("mousedown", popupClickClose);
+  });
 
-  // Функция отключения listener clickCloser
-  function clickCloserDisable() {
-    const openedPopup = document.querySelector('.popup_open');
-    document.removeEventListener('click', () => closePopup(openedPopup));
-  }
+
+
+function closePopupEsc(evt) {
+    if(evt.key === 'Escape'){
+        const popup = document.querySelector('.popup_open');
+        if(popup) {
+            closePopup(popup);
+        }
+    }
+}
 
 /* Сохранение изменений в профиле */
 function editProfileFormSubmitHandler(evt) {
@@ -82,7 +78,7 @@ function editProfileFormSubmitHandler(evt) {
     closePopup(popupProfile);
 }
 
-formElement.addEventListener("submit", editProfileFormSubmitHandler);
+formElementSubmit.addEventListener("submit", editProfileFormSubmitHandler);
 
 
 /* карточки «из коробки» */
@@ -153,8 +149,6 @@ function deleteCard(evt) {
     currentCard.remove();
 }
 
-
-
 // Добавление карточек
 function addCardHandler(evt) {
     evt.preventDefault();
@@ -163,8 +157,9 @@ function addCardHandler(evt) {
         link: inputLinkPick.value
     });
     cardsContainer.prepend(card);
-
+    evt.target.reset();
     closePopup(popupNewPic);
+    enableValidation(object)
 }
 
 formPictureElement.addEventListener('submit', addCardHandler);
@@ -190,6 +185,6 @@ function configureCardPictureForOpen(picture) {
 }
 
 
-closePopupButtonImage.addEventListener('click', handleCloseButton);
-closePopupEditProfile.addEventListener('click', handleCloseButton);
-closePopupAddNewPic.addEventListener('click', handleCloseButton);
+popupButtonImageClose.addEventListener('click', handleCloseButton);
+popupEditProfileClose.addEventListener('click', handleCloseButton);
+popupAddNewPicClose.addEventListener('click', handleCloseButton);
