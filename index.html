@@ -34,7 +34,7 @@
     </main>
 
     <footer class="footer">
-        <p class="footer__title">© 2022 Mihail Kuksenok</p>
+        <p class="footer__title">© 2022 Russia Mesto</p>
     </footer>
     <div class="popup popup_edit-profile">
         <div class="popup__container stop-propagation">
@@ -96,16 +96,16 @@
 
     <template class="template">
       <article class="element">
-        <button type="button" class="element__trash-button" aria-label="удалить"></button>
-        <img class="element__img">
+        <img class="element__img" src=" " alt="">
         <div class="element__info">
             <h2 class="element__title"></h2>
             <button type="button" class="element__like"></button>
         </div>
-
+        <button type="button" class="element__trash-button" aria-label="удалить"></button>
       </article>
     </template>
-    <script src="./scripts/script.js"></script>
-    <script src="./scripts/validate.js"></script>
+    <script type="module" src="./scripts/index.js"></script>
+    <!-- <script src="./scripts/FormValidator.js"></script> -->
+    <script type="module" src="./scripts/initial-cards.js"></script>
 </body>
 </html>
