@@ -1,6 +1,6 @@
-const popupViewPicture = document.querySelector('.popup_view-picture');
-const hugePicture = document.querySelector('.popup__huge-picture'); /* ссылка на картинку */
-const figCaptionPopup = document.querySelector('.popup__figcaption'); /* Подпись к картинке */
+/* const popupViewPicture = document.querySelector('.popup_view-picture');
+const hugePicture = document.querySelector('.popup__huge-picture'); /* ссылка на картинку */ 
+/* const figCaptionPopup = document.querySelector('.popup__figcaption'); /* Подпись к картинке */ 
 
 export class Card {
     constructor(data, cardSelector, openPopup) {
@@ -9,7 +9,7 @@ export class Card {
         this._cardSelector = cardSelector
         this._openPopup = openPopup
     }
-
+    
     _getTemplate() {
       const cardElement = document
         .querySelector(this._cardSelector)
@@ -30,7 +30,7 @@ export class Card {
 
         return this._element
     }
-
+    
     _setEventListeners() {
         this._likeBtn = this._element.querySelector('.element__like')
         this._deleteBtn = this._element.querySelector('.element__trash-button')
@@ -43,11 +43,6 @@ export class Card {
             this._deleteBtn.closest('.element').remove()
         })
 
-        this._element.querySelector('.element__img').addEventListener('click', () => {
-            hugePicture.alt = this._name
-            figCaptionPopup.textContent = this._name
-            hugePicture.src = this._link
-            this._openPopup(popupViewPicture)
-        })
+        this._element.querySelector('.element__img').addEventListener('click', () => this._openPopup(this._name, this._link))
     }
 }

@@ -6,7 +6,7 @@ export class FormValidator {
         this._inputList = Array.from(this._form.querySelectorAll(this._object.inputSelector))
         this._submitButton = this._form.querySelector(this._object.submitButtonSelector)
     }
-
+    
     _checkInputValidity = (inputElement) => {
         if (!inputElement.validity.valid) {
             this._showInputError(inputElement, inputElement.validationMessage);
