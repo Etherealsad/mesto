@@ -1,17 +1,17 @@
 import {
     FormValidator
-} from "../src/scripts/FormValidator.js";
+} from "../src/components/FormValidator.js";
 import {
     Card
-} from "../src/scripts/Card.js";
+} from "../src/components/Card.js";
 import {
     initialCards
-} from "../src/scripts/initial-cards.js";
+} from "../src/components/initial-cards.js";
 import '../src/pages/index.css';
-import Section from '../src/scripts/Section.js';
-import PopupWithForm from '../src/scripts/PopupWithForm.js';
-import popupWithImage from '../src/scripts/PopupWithImage.js';
-import UserInfo from '../src/scripts/UserInfo.js';
+import Section from '../src/components/Section.js';
+import PopupWithForm from '../src/components/PopupWithForm.js';
+import popupWithImage from '../src/components/PopupWithImage.js';
+import UserInfo from '../src/components/UserInfo.js';
 import { cardsContainer, tempalateElement, nameselector, subtitleSelector,
     popupProfileSelector, popupPictureSelector, popupImageSelector, 
     editProfileButton, formProfileElement, formNewPictureElement,
