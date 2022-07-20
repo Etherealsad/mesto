@@ -1,33 +1,22 @@
 import {
     FormValidator
-} from "../scripts/FormValidator.js";
+} from "../src/scripts/FormValidator.js";
 import {
     Card
-} from "../scripts/Card.js";
+} from "../src/scripts/Card.js";
 import {
     initialCards
-} from "../scripts/initial-cards.js";
-import '../pages/index.css';
-import Section from '../scripts/Section.js';
-import PopupWithForm from '../scripts/PopupWithForm.js';
-import popupWithImage from '../scripts/PopupWithImage.js';
-import UserInfo from '../scripts/UserInfo.js';
+} from "../src/scripts/initial-cards.js";
+import '../src/pages/index.css';
+import Section from '../src/scripts/Section.js';
+import PopupWithForm from '../src/scripts/PopupWithForm.js';
+import popupWithImage from '../src/scripts/PopupWithImage.js';
+import UserInfo from '../src/scripts/UserInfo.js';
 import { cardsContainer, tempalateElement, nameselector, subtitleSelector,
     popupProfileSelector, popupPictureSelector, popupImageSelector, 
     editProfileButton, formProfileElement, formNewPictureElement,
-    profileTitle, profileSubtitle, userNameInput, userJobInput, addPictureButton } from "./utils/constants.js";
+    profileTitle, profileSubtitle, userNameInput, userJobInput, addPictureButton, object } from "./utils/constants.js";
 
-
-
-const object = {
-    fieldsetSelector: '.popup__fieldset',
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__save',
-    inactiveButtonClass: 'popup__save_inactive',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
-}
 
 const editFormValidator = new FormValidator(object, formProfileElement)
 const addPickValidator = new FormValidator(object, formNewPictureElement)
@@ -47,8 +36,8 @@ function editProfileHandler(data) {
 
 function addCardHandler(data) {
     const cardElement = createCard({
-        name: data('popup__input_type_pic'),
-        link: data('popup__input_type_link')
+        name: data['title'],
+        link: data['picture']
     })
     cardsContainer.prepend(cardElement)
     popupAddCard.close()

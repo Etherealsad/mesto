@@ -13,3 +13,13 @@ export const profileSubtitle = document.querySelector('.profile__subtitle')
 export const userNameInput = document.querySelector('.popup__input_type_name')
 export const userJobInput = document.querySelector('.popup__input_type_job')
 export const addPictureButton = document.querySelector('.profile__add-button')
+
+export const object = {
+    fieldsetSelector: '.popup__fieldset',
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__save',
+    inactiveButtonClass: 'popup__save_inactive',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+}
