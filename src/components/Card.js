@@ -1,7 +1,3 @@
-/* const popupViewPicture = document.querySelector('.popup_view-picture');
-const hugePicture = document.querySelector('.popup__huge-picture'); /* ссылка на картинку */ 
-/* const figCaptionPopup = document.querySelector('.popup__figcaption'); /* Подпись к картинке */ 
-
 export class Card {
     constructor(data, cardSelector, openPopup) {
         this._name = data.name

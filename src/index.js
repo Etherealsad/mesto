@@ -43,7 +43,7 @@ function addCardHandler(data) {
     popupAddCard.close()
 }
 
-export function handleCardClick(cardText, cardImage) {
+function handleCardClick(cardText, cardImage) {
     popupImageAdd.open(cardText, cardImage)
 }
 
@@ -63,14 +63,17 @@ const cardList = new Section({
 )
 cardList.renderItems()
 
-function fillInput() {
+/* function fillInput() {
     userNameInput.value = profileTitle.textContent
     userJobInput.value = profileSubtitle.textContent
-}
+}  */
 
 editProfileButton.addEventListener('click', () => {
-    fillInput()
+    /* fillInput()  */
     editFormValidator.initError()
+    const userInfoInput = userInfo.getUserInfo();
+    userNameInput.value = userInfoInput.userName;
+    userInfoInput.value = userInfoInput.userJob;
     popupEditProfile.open()
 })
 
