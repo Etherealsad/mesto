@@ -15,17 +15,17 @@
     <main class="content">
         <section class="profile">
             <div class="profile__info">
-                <img class="profile__photo" src="../src/images/Avatar.jpg" alt="Жак-Ив Кусто">
+                <img class="profile__photo" src="<%=require('../src/images/Avatar.jpg')%>" alt="Жак-Ив Кусто">
                 <div class="profile__name">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
                     <button class="profile__edit" type="button">
-                        <img src="../src/images/editprofile.svg" alt="Кнопка редактирования профиля">
+                        <img src="<%=require('../src/images/editprofile.svg')%>" alt="Кнопка редактирования профиля">
                     </button>
                     <p class="profile__subtitle">Исследователь океана</p>
                 </div>
             </div>
             <button class="profile__add-button" type="button">
-                <img class="profile__add-button-img" src='../src/images/Vectorplus.svg' alt="Добавить">
+                <img class="profile__add-button-img" src='<%=require("../src/images/Vectorplus.svg")%>' alt="Добавить">
             </button>
         </section>
         <section class="elements">
@@ -38,7 +38,7 @@
     </footer>
     <div class="popup popup_edit-profile">
         <div class="popup__container stop-propagation">
-            <button class="popup__close-button popup__close-button-profile" type="button"> <img class="popup__close-button-img" src="../src/images/CloseIconclosepopup.svg" alt="закрыть"></button>
+            <button class="popup__close-button popup__close-button-profile" type="button"> <img class="popup__close-button-img" src="<%=require('../src/images/CloseIconclosepopup.svg')%>" alt="закрыть"></button>
             <h3 class="popup__title">Редактировать профиль</h3>
             <form class="popup__form popup__form_edit-profile" name="edit-form" novalidate>
                 
@@ -63,7 +63,7 @@
 
     <div class="popup popup_add-picture">
         <div class="popup__container stop-propagation">
-            <button class="popup__close-button popup__close-button-add" type="button"> <img class="popup__close-button-img" src="../src/images/CloseIconclosepopup.svg" alt="закрыть"></button>
+            <button class="popup__close-button popup__close-button-add" type="button"> <img class="popup__close-button-img" src="<%=require('../src/images/CloseIconclosepopup.svg')%>" alt="закрыть"></button>
             <h3 class="popup__title">Новое место</h3>
             <form class="popup__form popup__form_add-picture" name="edit-form" novalidate>
                 
@@ -88,7 +88,7 @@
 
     <div class="popup popup_view-picture">
         <figure class="popup__view-window">
-          <button type="button" class="popup__close-button popup__close-button-image" aria-label="закрыть"><img class="popup__close-button-img" src="../src/images/CloseIconclosepopup.svg" alt="закрыть"></button>
+          <button type="button" class="popup__close-button popup__close-button-image" aria-label="закрыть"><img class="popup__close-button-img" src="<%=require('../src/images/CloseIconclosepopup.svg')%>" alt="закрыть"></button>
           <img class="popup__huge-picture" src=" " alt=" ">
           <figcaption class="popup__figcaption"> </figcaption>
         </figure>

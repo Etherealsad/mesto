@@ -1,21 +1,21 @@
 import {
     FormValidator
-} from "../src/components/FormValidator.js";
+} from "../components/FormValidator.js";
 import {
     Card
-} from "../src/components/Card.js";
+} from "../components/Card.js";
 import {
     initialCards
-} from "../src/components/initial-cards.js";
-import '../src/pages/index.css';
-import Section from '../src/components/Section.js';
-import PopupWithForm from '../src/components/PopupWithForm.js';
-import popupWithImage from '../src/components/PopupWithImage.js';
-import UserInfo from '../src/components/UserInfo.js';
+} from "../components/initial-cards.js";
+import './index.css';
+import Section from '../components/Section.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import popupWithImage from '../components/PopupWithImage.js';
+import UserInfo from '../components/UserInfo.js';
 import { cardsContainer, tempalateElement, nameselector, subtitleSelector,
     popupProfileSelector, popupPictureSelector, popupImageSelector, 
     editProfileButton, formProfileElement, formNewPictureElement,
-    profileTitle, profileSubtitle, userNameInput, userJobInput, addPictureButton, object } from "./utils/constants.js";
+    profileTitle, profileSubtitle, userNameInput, userJobInput, addPictureButton, object } from "../utils/constants.js";
 
 
 const editFormValidator = new FormValidator(object, formProfileElement)
@@ -63,17 +63,11 @@ const cardList = new Section({
 )
 cardList.renderItems()
 
-/* function fillInput() {
-    userNameInput.value = profileTitle.textContent
-    userJobInput.value = profileSubtitle.textContent
-}  */
-
 editProfileButton.addEventListener('click', () => {
-    /* fillInput()  */
-    editFormValidator.initError()
     const userInfoInput = userInfo.getUserInfo();
     userNameInput.value = userInfoInput.userName;
-    userInfoInput.value = userInfoInput.userJob;
+    userJobInput.value = userInfoInput.userJob;
+    editFormValidator.initError()
     popupEditProfile.open()
 })
 
