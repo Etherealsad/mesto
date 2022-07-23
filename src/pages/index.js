@@ -39,7 +39,7 @@ function addCardHandler(data) {
         name: data['title'],
         link: data['picture']
     })
-    cardsContainer.prepend(cardElement)
+    cardList.addItem(cardElement)
     popupAddCard.close()
 }
 
