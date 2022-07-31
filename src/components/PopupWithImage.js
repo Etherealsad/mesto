@@ -7,10 +7,11 @@ export default class PopupWithImage extends Popup {
         this._hugePicFigcap = this._popup.querySelector('.popup__figcaption')
     }
     
-    open(name, link) {
-        this._hugePic.src = link
-        this._hugePic.alt = name
-        this._hugePicFigcap.textContent = name
+    open(evt) {
+        const target = evt.target
+        this._hugePic.src = target.src
+        this._hugePic.alt = target.alt
+        this._hugePicFigcap.textContent = target.alt
         super.open()
     }
 }

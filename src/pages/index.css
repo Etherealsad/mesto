@@ -5,9 +5,13 @@
 @import url(../blocks/content/content.css);
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__edit/profile__edit.css);
+@import url(../blocks/profile/__edit-button-img/profile__edit-button-img.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__photo/profile__photo.css);
+@import url(../blocks/avatar/avatar.css);
+@import url(../blocks/avatar/__cover/avatar__cover.css);
+@import url(../blocks/avatar/__edit-button-img/avatar__edit-button-img.css);
 @import url(../blocks/profile/__subtitle/profile__subtitle.css);
 @import url(../blocks/profile/__title/profile__title.css);
 @import url(../blocks/profile/__add-button-img/__add-button-img.css);
@@ -19,6 +23,9 @@
 @import url(../blocks/element/__title/element__title.css);
 @import url(../blocks/element/__trash-button/element__trash-button.css);
 @import url(../blocks/element/element.css);
+@import url(../blocks/element/__like-block/element__like-block.css);
+@import url(../blocks/element/__like-counter/element__like-counter.css);
+@import url(../blocks/element/__trash-button/_type_none/element__trash-button_type_none.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__title/footer__title.css);
 @import url(../blocks/popup/popup.css);
@@ -26,6 +33,10 @@
 @import url(../blocks/popup/__close-button-img/popup__close-button-img.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/_delete-agreement/popup_delete-agreement.css);
+@import url(../blocks/popup/_edit-avatar/popup_edit-avatar.css);
+@import url(../blocks/popup/__form/_delete-agreement/popup__form_delete-agreement.css);
+@import url(../blocks/popup/__save/_agreement/popup__save_agreement.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__save/popup__save.css);

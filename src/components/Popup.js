@@ -1,12 +1,10 @@
 export default class Popup {
     constructor(popupSelector) {
-        console.log('Конструктор Popup. Передан popupSelector:');
-        console.dir(popupSelector);
         this._popup = document.querySelector(popupSelector)
     }
     
     open() {
-        this._setEventListeners()
+        this.setEventListeners()
         this._popup.classList.add('popup_open')
     }
 
@@ -27,7 +25,7 @@ export default class Popup {
         }
     }
 
-    _setEventListeners() {
+    setEventListeners() {
         this._popup.addEventListener('click', this._clickCloser)
         document.addEventListener('keydown', this._closePopupEsc)
     }
@@ -36,4 +34,17 @@ export default class Popup {
         this._popup.removeEventListener('click', this._clickCloser)
         document.removeEventListener('keydown', this._closePopupEsc)
   }
+
+   loading (popup, isLoaded)  {
+    if (isLoaded) {
+        if (popup === popupAddCard) {
+            popup.setSubmitButtonText('Создать')
+        } else {
+            popup.setSubmitButtonText('Сохранить')
+        } 
+    } else {
+        popup.setSubmitButtonText('Сохранение...')
+        popup.setSubmitButtonAttribute()
+    }
+}
 }

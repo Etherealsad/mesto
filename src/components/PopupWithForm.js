@@ -3,11 +3,26 @@ import Popup from "./Popup.js";
 export default class PopupWithForm extends Popup {
     constructor(popupSelector, handleSubmitForm) {
         super(popupSelector)
+        this._inactiveButtonClass = 'popup__save_inactive'
         this._handleSubmitForm = handleSubmitForm
         this._form = this._popup.querySelector('.popup__form')
         this._inputList = this._form.querySelectorAll('.popup__input')
+        this._submBtn = this._form.querySelector('.popup__save');
     }
     
+     setSubmitButtonText(buttonText) {
+        this._submBtn.textContent = buttonText
+      }
+
+    setSubmitButtonAttribute() {
+        this._submBtn.setAttribute('disabled', true)
+        this._submBtn.classList.add(this._inactiveButtonClass)
+      }
+
+    setSubmitCallback(callback) {
+        this._handleSubmitForm = callback
+      } 
+
     _inputValues() {
         this._formValues = {}
         this._inputList.forEach(input => {
@@ -16,8 +31,8 @@ export default class PopupWithForm extends Popup {
         return this._formValues
     }
     
-    _setEventListeners() {
-        super._setEventListeners()
+    setEventListeners() {
+        super.setEventListeners()
         this._form.addEventListener('submit', this._submitHandler)
     }
 
