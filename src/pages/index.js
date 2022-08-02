@@ -27,8 +27,8 @@ const popupAddCard = new PopupWithForm(popupPictureSelector, addCardHandler)
 const popupImageAdd = new popupWithImage(popupImageSelector)
 const userInfo = new UserInfo(nameselector, subtitleSelector, avatarSelector)
 const popupEditAvatar = new PopupWithForm(popupAvatarSelector, editAvatarFormSubmitHandler)
-/* const confirmPopup = new PopupWithForm(popupDeleteAgreementSelector, editAvatarFormSubmitHandler)
- */
+ const confirmPopup = new PopupWithForm(popupDeleteAgreementSelector, editAvatarFormSubmitHandler)
+ 
 editProfileButton.addEventListener('click', () => {
     const profileData = userInfo.getUserInfo();
     userNameInput.value = profileData.userName;
@@ -68,35 +68,35 @@ const likeCardCallback = (isLiked, cardData, card) => {
         .then(answer => {
             card.setLikeCounter(answer.likes.length)
         })
-        .cath((err) => {
+        .catch((err) => {
             console.log(err)
         });
     } else {
         api.removeLike(cardData._id)
             .then(answer => {
                 card.setLikeCounter(answer.likes.lenght);
-            }) .cath((err) => {
+            }) .catch((err) => {
                 console.log(err)
             })
     }
 }
 
-/* const deleteCardCallback = (cardData, card, evt) => {
+const deleteCardCallback = (cardData, card, evt) => {
     confirmPopup.setSubmitCallback(() => {
         api.removeCard(cardData._id)
           .then(() => {
             card.deleteCard(evt)
             confirmPopup.close()
           })
-          .cath((err) => {
+          .catch((err) => {
             console.log(err)
           })
     })
     confirmPopup.open()
-} */
+} 
 
-function createCardItem(placeData, templateCard, openFullViewPopup, userID, /* deleteCardCallback, */ likeCardCallback) {
-    return new Card(placeData, templateCard, openFullViewPopup, userID, /* deleteCardCallback, */ likeCardCallback)
+function createCardItem(placeData, templateCard, openFullViewPopup, userID, deleteCardCallback, likeCardCallback) {
+    return new Card(placeData, templateCard, openFullViewPopup, userID, deleteCardCallback, likeCardCallback)
 }
 
 function editProfileHandler (userData) {
@@ -106,7 +106,7 @@ function editProfileHandler (userData) {
         userInfo.setUserInfo(answer.name, answer.about)
         popupEditProfile.close()
       })
-      .cath((err) => {
+      .catch((err) => {
         console.log(err)
       })
       .finally(() => {
@@ -121,7 +121,7 @@ function addCardHandler (cardData) {
             section.addItem(newPlace)
             popupAddCard.close()
         })
-        .cath((err) => {
+        .catch((err) => {
          console.log(err)
         })
         .finally(() => {
@@ -137,7 +137,7 @@ function editAvatarFormSubmitHandler (editLikeAvatar){
         userInfo.setUserAvatar(data.avatar)
         popupEditAvatar.close()
       })
-      .cath((err) => {
+      .catch((err) => {
         console.log(err)
       })
       .finally(() => {
@@ -146,7 +146,7 @@ function editAvatarFormSubmitHandler (editLikeAvatar){
 }
 
 const renderer = (item, container) => {
-    const card = createCardItem(item, tempalateElement, popupImageAdd.open.bind(popupImageAdd), userInfo.getUserId(), /* deleteCardCallback, */ likeCardCallback)
+    const card = createCardItem(item, tempalateElement, popupImageAdd.open.bind(popupImageAdd), userInfo.getUserId(), deleteCardCallback, likeCardCallback)
     const cardDomeNode = card.createDomNode()
     container.prepend(cardDomeNode)
 }
