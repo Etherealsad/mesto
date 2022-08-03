@@ -34,17 +34,4 @@ export default class Popup {
         this._popup.removeEventListener('click', this._clickCloser)
         document.removeEventListener('keydown', this._closePopupEsc)
   }
-
-   loading (popup, isLoaded)  {
-    if (isLoaded) {
-        if (popup === popupAddCard) {
-            popup.setSubmitButtonText('Создать')
-        } else {
-            popup.setSubmitButtonText('Сохранить')
-        } 
-    } else {
-        popup.setSubmitButtonText('Сохранение...')
-        popup.setSubmitButtonAttribute()
-    }
-}
 }

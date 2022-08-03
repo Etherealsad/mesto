@@ -29,7 +29,7 @@ export default class Card {
     
         this._placeData.likes.forEach(person => {
           if (person._id === this._userID) {
-            this._toggleLikeButton()
+            this.toggleLikeButton()
             this._isLiked = true
           }
         })
@@ -37,7 +37,7 @@ export default class Card {
         return this._element
       }
 
-      _toggleLikeButton = () => {
+      toggleLikeButton = () => {
         this._likeButton.classList.toggle('element__like-active')
       }
 
@@ -46,7 +46,6 @@ export default class Card {
       }
 
       _likeButtonHandler = () => {
-        this._toggleLikeButton()
         this._isLiked = !this._isLiked
         this._likeCardCallback(this._isLiked, this._placeData, this)
       }

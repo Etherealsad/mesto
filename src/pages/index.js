@@ -33,19 +33,17 @@ editProfileButton.addEventListener('click', () => {
     const profileData = userInfo.getUserInfo();
     userNameInput.value = profileData.userName;
     userJobInput.value = profileData.userJob;
-    editFormValidator.initError()
+    editFormValidator.resetValidation()
     popupEditProfile.open()
 })
 
 addPictureButton.addEventListener('click', () => {
-    formNewPictureElement.reset()
-    addPickValidator.initError()
+    addPickValidator.resetValidation()
     popupAddCard.open()
 })
 
-editAvatar.addEventListener('click', () => {
-    formAvatarElement.reset()
-    avatarFormValidator.initError()
+editAvatar.addEventListener('click', () => { 
+    avatarFormValidator.resetValidation()
     popupEditAvatar.open()
 })
 
@@ -66,6 +64,7 @@ const likeCardCallback = (isLiked, cardData, card) => {
     if (isLiked) {
         api.addLike(cardData._id)
         .then(answer => {
+            card.toggleLikeButton()
             card.setLikeCounter(answer.likes.length)
         })
         .catch((err) => {
@@ -74,7 +73,8 @@ const likeCardCallback = (isLiked, cardData, card) => {
     } else {
         api.removeLike(cardData._id)
             .then(answer => {
-                card.setLikeCounter(answer.likes.lenght);
+                card.toggleLikeButton()
+                card.setLikeCounter(answer.likes.length);
             }) .catch((err) => {
                 console.log(err)
             })
@@ -145,12 +145,12 @@ function editAvatarFormSubmitHandler (editLikeAvatar){
       })
 }
 
-const renderer = (item, container) => {
+const renderer = (item) => {
     const card = createCardItem(item, tempalateElement, popupImageAdd.open.bind(popupImageAdd), userInfo.getUserId(), deleteCardCallback, likeCardCallback)
     const cardDomeNode = card.createDomNode()
-    container.prepend(cardDomeNode)
+    section.addItem(cardDomeNode)
 }
-popupAvatarSelector
+
 function updateUserInformation (userName, userJob, userAvatar, userID) {
     userInfo.setUserInfo(userName, userJob)
     userInfo.setUserId(userID)
