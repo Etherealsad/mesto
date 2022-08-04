@@ -8,6 +8,7 @@ export default class PopupWithForm extends Popup {
         this._form = this._popup.querySelector('.popup__form')
         this._inputList = this._form.querySelectorAll('.popup__input')
         this._submBtn = this._form.querySelector('.popup__save');
+        this._submitBtnText = this._submBtn.textContent;
     }
     
      setSubmitButtonText(buttonText) {
@@ -47,7 +48,15 @@ export default class PopupWithForm extends Popup {
         this._form.removeEventListener('submit', this._submitHandler)
     }
 
-    loading (popup, isLoaded)  {
+    loading(isLoaded, loadingtext = 'Сохранение...') {
+        if(isLoaded) {
+            this._submBtn.textContent =  loadingtext;
+        } else {
+            this._submBtn.textContent = this._submitBtnText
+        }
+    }
+
+    /* loading (popup, isLoaded)  {
         if (isLoaded) {
             if (popup === popupAddCard) {
                 popup.setSubmitButtonText('Создать')
@@ -58,5 +67,5 @@ export default class PopupWithForm extends Popup {
             popup.setSubmitButtonText('Сохранение...')
             popup.setSubmitButtonAttribute()
         }
-    }
+    } */
 }

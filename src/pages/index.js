@@ -118,7 +118,7 @@ function addCardHandler (cardData) {
     loading(popupAddCard, false)
     api.addCard(cardData)
         .then(newPlace => {
-            section.addItem(newPlace)
+            renderer(newPlace)
             popupAddCard.close()
         })
         .catch((err) => {
